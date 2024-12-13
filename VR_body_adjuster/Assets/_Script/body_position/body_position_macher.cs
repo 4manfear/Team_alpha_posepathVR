@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class body_position_macher : MonoBehaviour
 {
+    public string tag_of_connected_body;
+    
+
     [SerializeField] Transform sameBodyTarget;
 
     [SerializeField] float accurateGap;
     [SerializeField] Material color_green;
     [SerializeField] Material color_red;
     [SerializeField] Renderer objectRenderer; // Renderer of the GameObject to change material
+    
 
     
     public bool mached;
@@ -17,9 +24,36 @@ public class body_position_macher : MonoBehaviour
 
     private void Start()
     {
-        objectRenderer.material = color_red;
-    }
 
+        // Find the object with the specified tag and assign its Transform
+        GameObject targetObject = GameObject.FindGameObjectWithTag(tag_of_connected_body);
+        if (targetObject != null)
+        {
+            sameBodyTarget = targetObject.transform;
+
+            // Try to get the Renderer component
+            objectRenderer = targetObject.GetComponent<Renderer>();
+            if (objectRenderer == null)
+            {
+                Debug.LogError($"The object with tag '{tag_of_connected_body}' does not have a Renderer component.");
+            }
+            else
+            {
+                // Initialize the material to red
+                objectRenderer.material = color_red;
+            }
+        }
+        else
+        {
+            Debug.LogError($"No GameObject found with tag: {tag_of_connected_body}");
+        }
+
+
+
+
+
+    }
+   
 
     private void OnTriggerEnter(Collider other)
     {
