@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BodyPart
+  - mannequine
+  - left_hand
+  - Right_hand
+  - right_leg
+  - left_leg
   layers:
   - Default
   - TransparentFX
