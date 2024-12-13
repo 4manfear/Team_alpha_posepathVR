@@ -10,6 +10,7 @@ public class player_bodygrabbel : MonoBehaviour
     [SerializeField] private InputActionReference _rightHandGrabButton;
     [SerializeField] private InputActionReference _leftHandTriggerButton;
     [SerializeField] private InputActionReference _leftHandGrabButton;
+    [SerializeField] InputActionReference button_right;
 
     [SerializeField] private Transform rightHandTransform; // Reference to the right hand/controller transform in the scene
     [SerializeField] private Transform leftHandTransform;  // Reference to the left hand/controller transform in the scene
@@ -24,6 +25,9 @@ public class player_bodygrabbel : MonoBehaviour
     private bool isGrabbing;
     private Quaternion previousHandRotation; // Stores the previous rotation of the hand
 
+
+    [SerializeField] reset_the_rotation_of_the_mannequine mannequinReset;
+
     private void Start()
     {
         
@@ -32,9 +36,14 @@ public class player_bodygrabbel : MonoBehaviour
         //ctx is the call back function used in here to bind the button and the function calling it
         _rightHandGrabButton.action.performed += ctx => TryGrabRightHand();
         _rightHandGrabButton.action.canceled += ctx => ReleaseRightHand();
+        button_right.action.performed += ctx => vr_button_pressed();
+        button_right.action.canceled += ctx => vr_button_Realeased();
 
         _leftHandGrabButton.action.performed += ctx => TryGrabLeftHand();
         _leftHandGrabButton.action.canceled += ctx => ReleaseLeftHand();
+        
+
+
     }
 
     private void TryGrabRightHand()
@@ -101,7 +110,16 @@ public class player_bodygrabbel : MonoBehaviour
         }
     }
 
-    
+    void vr_button_pressed()
+    {
+        Debug.Log("this button pressed");
+        mannequinReset.ResetMannequin();
+    }
+    void vr_button_Realeased()
+    {
+
+    }
+
 
     private void ReleaseRightHand()
     {
