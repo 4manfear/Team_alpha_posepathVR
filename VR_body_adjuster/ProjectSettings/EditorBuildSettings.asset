@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/shape_adjust_prototype.unity
+    guid: 600faa4071bd1df40b0adf2e6858ed79
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4c2f5f3c1b381304fa790a13a6a56d73, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 721e43ba0c6b88f4385fbdcb28b580b3, type: 2}
