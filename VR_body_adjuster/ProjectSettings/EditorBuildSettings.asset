@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/shape_adjust_prototype.unity
     guid: 600faa4071bd1df40b0adf2e6858ed79
+  - enabled: 1
+    path: Assets/Scenes/LVL_1.unity
+    guid: f182c0b9b4460f4439eb6d7bb61d9b13
+  - enabled: 1
+    path: Assets/Scenes/UI.unity
+    guid: 5f7bdf27b03bfe141a6d0390b4b41ece
+  - enabled: 1
+    path: Assets/Scenes/Main_Menu.unity
+    guid: 9f1f26c69fb908e4c9259d1be1bdf2a6
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4c2f5f3c1b381304fa790a13a6a56d73, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 721e43ba0c6b88f4385fbdcb28b580b3, type: 2}
