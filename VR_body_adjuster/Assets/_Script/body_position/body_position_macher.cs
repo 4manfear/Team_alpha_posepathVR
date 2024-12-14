@@ -53,7 +53,11 @@ public class body_position_macher : MonoBehaviour
 
 
     }
-   
+    private void Update()
+    {
+       
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

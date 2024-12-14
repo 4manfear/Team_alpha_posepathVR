@@ -15986,7 +15986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &519875968
 Transform:
   m_ObjectHideFlags: 0
@@ -48482,7 +48482,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7791486788655378091, guid: 9731468242ec5024592d6e6a0062b722, type: 3}
+  - {fileID: 2100000, guid: b7f9f8ab4c383eb47b9e0d555cd32351, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -53196,7 +53196,7 @@ Transform:
   m_GameObject: {fileID: 5703148734852736741}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -8.28, y: 3.17, z: 11.92}
+  m_LocalPosition: {x: -8.61, y: 3.17, z: 11.92}
   m_LocalScale: {x: 14.501437, y: 12.888149, z: 0.8743534}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53440,9 +53440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09e5b5458aa35c409423e321f1a33f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownTime: 120
-  movementSpeed: 5
-  destroyDelay: 0
+  countdownTime: 30
+  movementSpeed: 2
+  destroyDelay: 20
   movementDirection: {x: 0, y: 0, z: 1}
 --- !u!1 &5257971839877032809
 GameObject:
@@ -54067,7 +54067,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7791486788655378091, guid: cd999d0872e12cf418ffc412dae1d4bf, type: 3}
+  - {fileID: 2100000, guid: 014a0990f03a5804283545900d36dbc2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
