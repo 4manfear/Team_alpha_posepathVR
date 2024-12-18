@@ -6,8 +6,14 @@ using UnityEngine;
 
 public class pose_accruation_checker : MonoBehaviour
 {
+    [SerializeField] private wall_spawner wallspawner;
+    [SerializeField] private int wall_spawn_count = 1;
+
+    [SerializeField] private wall_movement wallmovement;
+    [SerializeField] float reset_wall_start_movening_timer;
+
     [SerializeField] private List<body_position_macher> bodyParts; // List of body part scripts
-    public bool canShatter = false; // Determines if shattering can occur
+    public bool canShatter ; // Determines if shattering can occur
 
     public bool start_checking;
 
@@ -20,9 +26,16 @@ public class pose_accruation_checker : MonoBehaviour
 
     private Vector3 originalCameraOffsetPosition; // To store the initial offset position
 
+    public int reset_timer_for_checking;
+    public float destroyer_delay;
+    public bool self_destroy;
+
 
     private void Start()
     {
+        wallspawner = GetComponent<wall_spawner>();
+
+
         if (cameraOffset == null)
         {
             // Automatically find the Camera Offset under XR Origin
@@ -52,9 +65,76 @@ public class pose_accruation_checker : MonoBehaviour
         if (start_checking)
         {
             CheckMatchingStatus();
+            time_to_destroy();
+            StartCoroutine(falsethestartchecking());
+
         }
        
+        if(destroyer_delay>0)
+        {
+            self_destroy = false;
+        }
+
     }
+
+
+    void time_to_destroy()
+    {
+        destroyer_delay -= Time.deltaTime;
+        if(destroyer_delay <= 0)
+        {
+            self_destroy = true;
+        }
+
+        
+    }
+
+
+    // reseting all the things
+    IEnumerator falsethestartchecking()
+    {
+        yield return new WaitForSeconds(reset_timer_for_checking);
+        
+        self_destroy =false;
+        if(start_checking)
+        {
+            wall_spawn_count++;
+        }
+
+        
+
+        if(wall_spawn_count == 2)
+        {
+            
+            canShatter = false;
+            destroyer_delay = 5;
+            reset_timer_for_checking = 10;
+            wallspawner.secondpose = true;
+            wallspawner.frstPose = false;
+        }
+        if(wall_spawn_count==3)
+        {
+           
+            canShatter = false;
+            destroyer_delay = 5;
+            reset_timer_for_checking = 10;
+            wallspawner.thirdpose = true;
+            wallspawner.secondpose = false;
+        }
+
+        foreach (var part in bodyParts)
+        {
+            if(part.mached==true)
+            {
+                part.mached = false;
+            }
+        }
+  
+        matchedCount =0;
+        start_checking = false;
+    }
+
+   
 
     private void CheckMatchingStatus()
     {

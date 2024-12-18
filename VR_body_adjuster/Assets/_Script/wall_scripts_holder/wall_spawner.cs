@@ -4,31 +4,53 @@ using UnityEngine;
 
 public class wall_spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject wallPrefab; // Prefab of the wall to spawn
-    [SerializeField] private Transform spawnPoint; // Spawn point for the new wall
+    [SerializeField] private GameObject pose1, pose2, pose3;
 
-   
+    public bool frstPose, secondpose, thirdpose;
 
-    private void OnEnable()
+    [SerializeField] private wall_movement wallmovement;
+    [SerializeField] float reset_wall_start_movening_timer;
+
+    public bool callthefunction;
+
+    private void Start()
     {
-        wall_movement.OnWallDestroyed += SpawnWall;
+        wallmovement = GetComponent<wall_movement>();
+        frstPose = true;
     }
 
-    private void OnDisable()
+    private void Update()
     {
-        wall_movement.OnWallDestroyed -= SpawnWall;
-    }
 
-    private void SpawnWall()
-    {
-        if (wallPrefab != null && spawnPoint != null)
+        if (callthefunction)
         {
-            Instantiate(wallPrefab, spawnPoint.position, spawnPoint.rotation);
-            Debug.Log("New wall spawned!");
+            reseting();
         }
-        else
+        
+        if (secondpose)
         {
-            Debug.LogError("Wall prefab or spawn point is not assigned!");
+            pose2.SetActive(true);
+            Destroy(pose1);
+            callthefunction = true;
+        
+        }
+        if(thirdpose)
+        {
+            pose3.SetActive(true);
+            Destroy (pose2);
+            callthefunction = true;
+           
         }
     }
+
+    void reseting()
+    {
+        callthefunction = false;
+        wallmovement.countdownTime = reset_wall_start_movening_timer;
+        wallmovement.isMoving = false;
+       
+    }
+
+
+
 }

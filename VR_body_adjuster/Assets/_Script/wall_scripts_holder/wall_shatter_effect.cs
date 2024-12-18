@@ -5,9 +5,15 @@ using UnityEngine;
 public class wall_shatter_effect : MonoBehaviour
 {
     public bool canshatter;
+  
 
     [SerializeField] private GameObject shattered_wall, the_orignal;
     public pose_accruation_checker pac;
+
+    private void Start()
+    {
+        shattered_wall.SetActive(false);
+    }
 
     private void Update()
     {
@@ -16,12 +22,20 @@ public class wall_shatter_effect : MonoBehaviour
             canshatter = true;
         }
 
+        if (pac.self_destroy == true)
+        {
+            Destroy(shattered_wall);
+            Destroy(the_orignal);
+           
+        }
 
-        if(canshatter)
+
+        if (canshatter)
         {
             shattered_wall.transform.parent = null;
             the_orignal.gameObject.SetActive(false);
             shattered_wall.SetActive(true);
+            Destroy(the_orignal);
         }
     }
 

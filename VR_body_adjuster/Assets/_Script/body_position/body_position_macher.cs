@@ -55,7 +55,10 @@ public class body_position_macher : MonoBehaviour
     }
     private void Update()
     {
-       
+       if(mached == false)
+        {
+            objectRenderer.material = color_red;
+        }
     }
 
 
