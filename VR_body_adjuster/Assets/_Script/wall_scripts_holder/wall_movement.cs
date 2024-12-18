@@ -13,6 +13,8 @@ public class wall_movement : MonoBehaviour
     public delegate void WallDestroyed();
     public static event WallDestroyed OnWallDestroyed; // Event triggered when the wall is destroyed
 
+   
+
     private void Start()
     {
         // Start the countdown
@@ -26,6 +28,8 @@ public class wall_movement : MonoBehaviour
             // Move the wall in the specified direction
             transform.Translate(movementDirection.normalized * movementSpeed * Time.deltaTime);
         }
+
+       
     }
 
     private IEnumerator StartCountdown()
@@ -53,4 +57,6 @@ public class wall_movement : MonoBehaviour
         Destroy(gameObject);
         Debug.Log("Wall destroyed!");
     }
+
+    
 }
