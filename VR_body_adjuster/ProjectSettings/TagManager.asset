@@ -10,6 +10,8 @@ TagManager:
   - Right_hand
   - right_leg
   - left_leg
+  - wall
+  - cut_out_wall
   layers:
   - Default
   - TransparentFX

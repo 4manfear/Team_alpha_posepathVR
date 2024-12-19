@@ -4,31 +4,68 @@ using UnityEngine;
 
 public class wall_spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject wallPrefab; // Prefab of the wall to spawn
-    [SerializeField] private Transform spawnPoint; // Spawn point for the new wall
+    [SerializeField] private GameObject pose1, pose2, pose3;
 
-   
+    public bool frstPose, secondpose, thirdpose;
 
-    private void OnEnable()
+    [SerializeField] private wall_movement wallmovement;
+    [SerializeField] float reset_wall_start_movening_timer;
+
+    public float timer_starts;
+
+    public bool callthefunction;
+
+    private void Start()
     {
-        wall_movement.OnWallDestroyed += SpawnWall;
+        wallmovement = GetComponent<wall_movement>();
+        frstPose = true;
     }
 
-    private void OnDisable()
+    private void Update()
     {
-        wall_movement.OnWallDestroyed -= SpawnWall;
-    }
-
-    private void SpawnWall()
-    {
-        if (wallPrefab != null && spawnPoint != null)
+        if (callthefunction)
         {
-            Instantiate(wallPrefab, spawnPoint.position, spawnPoint.rotation);
-            Debug.Log("New wall spawned!");
+            StartCoroutine(ResetWallMovementCoroutine());
         }
-        else
+
+        if (secondpose)
         {
-            Debug.LogError("Wall prefab or spawn point is not assigned!");
+            pose2.SetActive(true);
+            Destroy(pose1);
+            StartCoroutine(function_calling());
+            secondpose = false;
+        }
+        if (thirdpose)
+        {
+            pose3.SetActive(true);
+            Destroy(pose2);
+            StartCoroutine(function_calling());
         }
     }
+
+    IEnumerator function_calling()
+    {
+        yield return new WaitForSeconds(timer_starts);
+        callthefunction = true;
+
+        yield return new WaitForSeconds(3);
+        callthefunction = false;
+    }
+
+    IEnumerator ResetWallMovementCoroutine()
+    {
+        reseting(); // Call the reseting logic
+        yield return null; // Wait for the current frame to finish
+
+        // Wait for the reset_wall_start_movening_timer duration
+        yield return new WaitForSeconds(reset_wall_start_movening_timer);
+        callthefunction = false; // Set callthefunction to false after reset logic is completed
+    }
+
+    void reseting()
+    {
+        wallmovement.countdownTime = reset_wall_start_movening_timer;
+        wallmovement.isMoving = false;
+    }
+
 }

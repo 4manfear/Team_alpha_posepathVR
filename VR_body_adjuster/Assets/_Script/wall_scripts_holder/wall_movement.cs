@@ -1,56 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class wall_movement : MonoBehaviour
 {
-    [SerializeField] private float countdownTime = 60f; // Countdown time in seconds
-    [SerializeField] private float movementSpeed = 5f; // Speed at which the wall moves
-    [SerializeField]private float destroyDelay;
+    [SerializeField] private TextMeshPro textoftime;
+   
+
+
+    [SerializeField] private Transform cut_out_wall;
+    [SerializeField] private wall_spawner wallspawner;
+
+
+    public float countdownTime ; // Countdown time in seconds
+    [SerializeField] private float movementSpeed; // Speed at which the wall moves
+   // [SerializeField]private float destroyDelay;
     [SerializeField] private Vector3 movementDirection = Vector3.forward; // Direction of movement
 
-    private bool isMoving = false; // Tracks if the wall should start moving
-    public delegate void WallDestroyed();
-    public static event WallDestroyed OnWallDestroyed; // Event triggered when the wall is destroyed
+    public bool isMoving = false; // Tracks if the wall should start moving
+    //public delegate void WallDestroyed();
+  //  public static event WallDestroyed OnWallDestroyed; // Event triggered when the wall is destroyed
+
+   
 
     private void Start()
     {
-        // Start the countdown
-        StartCoroutine(StartCountdown());
+       
+        wallspawner.frstPose = true;
+        wallspawner = FindObjectOfType<wall_spawner>();
+
     }
 
     private void Update()
     {
+        
+
+        // Update countdown display
+        textoftime.text = Mathf.Max(0, countdownTime).ToString("F1") + "s";
+
+        GameObject wall = GameObject.FindGameObjectWithTag("cut_out_wall");
+        cut_out_wall = wall.GetComponent<Transform>();
+
+
         if (isMoving)
         {
             // Move the wall in the specified direction
-            transform.Translate(movementDirection.normalized * movementSpeed * Time.deltaTime);
+            cut_out_wall.Translate(movementDirection.normalized * movementSpeed * Time.deltaTime);
         }
+        // Start the countdown
+        StartCoroutine(StartCountdown());
+
+
+
+        
     }
+
+    
 
     private IEnumerator StartCountdown()
     {
-        // Wait for the countdown to finish
-        yield return new WaitForSeconds(countdownTime);
+        // Countdown timer
+        float timeRemaining = countdownTime;
+        while (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            countdownTime = timeRemaining; // Update the display value
+            yield return null; // Wait for the next frame
+        }
 
-        // Start moving the wall
+        // Countdown complete, start moving the wall
         isMoving = true;
         Debug.Log("Wall is moving!");
 
-        // Destroy the wall after the delay
-        StartCoroutine(DestroyWall());
+       
     }
 
-    private IEnumerator DestroyWall()
-    {
-        // Wait for the destroy delay
-        yield return new WaitForSeconds(destroyDelay);
+    
 
-        // Notify the spawner
-        OnWallDestroyed?.Invoke();
-
-        // Destroy the current wall
-        Destroy(gameObject);
-        Debug.Log("Wall destroyed!");
-    }
+    
 }
