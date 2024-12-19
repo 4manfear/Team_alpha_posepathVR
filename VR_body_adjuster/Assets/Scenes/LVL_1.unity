@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 82ba7a3826bd2c0419fde235e0fcec15, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: caa147095c4db2a44a6d93ca1d599d97, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -23632,6 +23632,51 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &569010709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 569010710}
+  - component: {fileID: 569010711}
+  m_Layer: 0
+  m_Name: Skybox_Rotation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &569010710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569010709}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.207165, y: 2.0131388, z: -0.9116231}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &569010711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569010709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7fd3ae04afbac4aa607be6239d44fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
 --- !u!1 &598754344
 GameObject:
   m_ObjectHideFlags: 0
@@ -33637,10 +33682,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textoftime: {fileID: 1270627906}
-  next_wall_text: {fileID: 553042691}
-  next_wall_audio: {fileID: 899429545}
-  next_wall_clip: {fileID: 8300000, guid: 017d9ee04f0254643b3a1c75fdee56ba, type: 3}
-  pac: {fileID: 1400653795}
   cut_out_wall: {fileID: 0}
   wallspawner: {fileID: 1400653800}
   countdownTime: 3
@@ -64502,3 +64543,4 @@ SceneRoots:
   - {fileID: 1615973415}
   - {fileID: 146309348}
   - {fileID: 553042695}
+  - {fileID: 569010710}

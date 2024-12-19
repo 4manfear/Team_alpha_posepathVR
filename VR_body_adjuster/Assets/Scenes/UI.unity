@@ -2852,6 +2852,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 186305205}
     m_Modifications:
+    - target: {fileID: 100000, guid: 05a81c3d5091440058129444d28322f3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 05a81c3d5091440058129444d28322f3, type: 3}
       propertyPath: m_Name
       value: Play
