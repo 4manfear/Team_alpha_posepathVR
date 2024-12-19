@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class wall_movement : MonoBehaviour
 {
     [SerializeField] private TextMeshPro textoftime;
+   
 
 
     [SerializeField] private Transform cut_out_wall;
@@ -34,7 +34,7 @@ public class wall_movement : MonoBehaviour
 
     private void Update()
     {
-
+        
 
         // Update countdown display
         textoftime.text = Mathf.Max(0, countdownTime).ToString("F1") + "s";
@@ -51,7 +51,12 @@ public class wall_movement : MonoBehaviour
         // Start the countdown
         StartCoroutine(StartCountdown());
 
+
+
+        
     }
+
+    
 
     private IEnumerator StartCountdown()
     {

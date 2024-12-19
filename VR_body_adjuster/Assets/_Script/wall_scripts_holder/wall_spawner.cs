@@ -11,6 +11,8 @@ public class wall_spawner : MonoBehaviour
     [SerializeField] private wall_movement wallmovement;
     [SerializeField] float reset_wall_start_movening_timer;
 
+    public float timer_starts;
+
     public bool callthefunction;
 
     private void Start()
@@ -21,36 +23,49 @@ public class wall_spawner : MonoBehaviour
 
     private void Update()
     {
-
         if (callthefunction)
         {
-            reseting();
+            StartCoroutine(ResetWallMovementCoroutine());
         }
-        
+
         if (secondpose)
         {
             pose2.SetActive(true);
             Destroy(pose1);
-            callthefunction = true;
-        
+            StartCoroutine(function_calling());
+            secondpose = false;
         }
-        if(thirdpose)
+        if (thirdpose)
         {
             pose3.SetActive(true);
-            Destroy (pose2);
-            callthefunction = true;
-           
+            Destroy(pose2);
+            StartCoroutine(function_calling());
         }
+    }
+
+    IEnumerator function_calling()
+    {
+        yield return new WaitForSeconds(timer_starts);
+        callthefunction = true;
+
+        yield return new WaitForSeconds(3);
+        callthefunction = false;
+    }
+
+    IEnumerator ResetWallMovementCoroutine()
+    {
+        reseting(); // Call the reseting logic
+        yield return null; // Wait for the current frame to finish
+
+        // Wait for the reset_wall_start_movening_timer duration
+        yield return new WaitForSeconds(reset_wall_start_movening_timer);
+        callthefunction = false; // Set callthefunction to false after reset logic is completed
     }
 
     void reseting()
     {
-        callthefunction = false;
         wallmovement.countdownTime = reset_wall_start_movening_timer;
         wallmovement.isMoving = false;
-       
     }
-
-
 
 }

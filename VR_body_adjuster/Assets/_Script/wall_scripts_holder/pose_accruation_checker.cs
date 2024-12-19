@@ -78,6 +78,9 @@ public class pose_accruation_checker : MonoBehaviour
     }
 
 
+  
+
+
     void time_to_destroy()
     {
         destroyer_delay -= Time.deltaTime;
