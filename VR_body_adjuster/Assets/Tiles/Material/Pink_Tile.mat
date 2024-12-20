@@ -7,11 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Floor
+  m_Name: Pink_Tile
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _DETAIL_MULX2
   - _EMISSION
   - _METALLICGLOSSMAP
   - _NORMALMAP
@@ -28,11 +29,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 4a88f6c79fb5180418c92003e9771fee, type: 3}
+        m_Texture: {fileID: 2800000, guid: d51cfb210fc03264fbdce4ea90daf3ab, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 07f1eece1dda56441b1fec6ec3d242ae, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
@@ -44,15 +45,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: a78566fea01be28439449dc73a7c4a17, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0f1d1dc500ef47e49a2eabc4530679be, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 95b823bdcdac2b8478bb73c118795869, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3cc1308380d40bb498d7ff69c544efb8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 7572f686d0e13e94b80eb39db2ef608a, type: 3}
+        m_Texture: {fileID: 2800000, guid: e95113052801f1a4b90b85741c8c5b82, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -60,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: 2ea1cc76317a01c47894883675345d51, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0a215cd8877d820458a430d5c45eac98, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -82,6 +83,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 4, g: 4, b: 4, a: 1}
+    - _Color: {r: 0, g: 0, b: 0.9811321, a: 1}
+    - _EmissionColor: {r: 0.8980556, g: 6.869109, b: 18.345547, a: 1}
   m_BuildTextureStacks: []
