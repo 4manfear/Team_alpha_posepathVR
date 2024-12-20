@@ -9,8 +9,6 @@ public class pose_accruation_checker : MonoBehaviour
     [SerializeField] private wall_spawner wallspawner;
     [SerializeField] private int wall_spawn_count = 1;
 
-    [SerializeField] private wall_movement wallmovement;
-    [SerializeField] float reset_wall_start_movening_timer;
 
     [SerializeField] private List<body_position_macher> bodyParts; // List of body part scripts
     public bool canShatter ; // Determines if shattering can occur
@@ -133,8 +131,9 @@ public class pose_accruation_checker : MonoBehaviour
             }
         }
   
-        matchedCount =0;
+        matchedCount = 0;
         start_checking = false;
+        bodyParts = null;
     }
 
    
