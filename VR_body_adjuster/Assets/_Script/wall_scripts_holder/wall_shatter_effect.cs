@@ -17,6 +17,9 @@ public class wall_shatter_effect : MonoBehaviour
 
     private void Update()
     {
+
+        pac = GameObject.FindObjectOfType<pose_accruation_checker>();
+
         if (pac.canShatter == true)
         {
             canshatter = true;

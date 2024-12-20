@@ -34,12 +34,12 @@ public class wall_movement : MonoBehaviour
 
     private void Update()
     {
-        
+        GameObject wall = GameObject.FindGameObjectWithTag("cut_out_wall");
 
         // Update countdown display
         textoftime.text = Mathf.Max(0, countdownTime).ToString("F1") + "s";
 
-        GameObject wall = GameObject.FindGameObjectWithTag("cut_out_wall");
+        
         cut_out_wall = wall.GetComponent<Transform>();
 
 
