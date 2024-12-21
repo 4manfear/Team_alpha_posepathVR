@@ -5,64 +5,86 @@ using TMPro;
 
 public class flex_coin_adder : MonoBehaviour
 {
-    [SerializeField] pose_accruation_checker pac;
-    [SerializeField] inlevel_1_coin level_one_scritable_object;
+    [SerializeField] private pose_accruation_checker pac; // Pose accuracy checker
+    [SerializeField] private inlevel_1_coin levelOneScriptableObject; // Scriptable Object for level
 
-    public TextMeshPro flex_coin_shower; 
+    public TextMeshPro flexCoinDisplay;
 
-    public int perfect_mached_max_coin;
-    public int three_machem_max_coin;
-    public int lessthen_three_max_coin;
+    public int perfectMatchMaxCoin;
+    public int threeMatchMaxCoin;
+    public int lessThanThreeMaxCoin;
 
     private bool hasAddedPerfectCoins = false;
     private bool hasAddedThreeMatchCoins = false;
     private bool hasAddedLessThanThreeCoins = false;
 
-
     private void Start()
     {
-        pac = GameObject.FindAnyObjectByType<pose_accruation_checker>();
+        // Find the pose accuracy checker if not assigned
+        if (pac == null)
+        {
+            pac = FindObjectOfType<pose_accruation_checker>();
+        }
+
+        // Log error if pac is still null
+        if (pac == null)
+        {
+            Debug.LogError("PoseAccruationChecker not found in the scene!");
+        }
+
+        // Ensure the Scriptable Object is assigned
+        if (levelOneScriptableObject == null)
+        {
+            Debug.LogError("Level One Scriptable Object is not assigned!");
+        }
     }
 
     private void Update()
     {
-        if(pac.matchedCount == 4 && level_one_scritable_object.level_is_completed != true && !hasAddedPerfectCoins)
+        if (pac == null || levelOneScriptableObject == null) return;
+
+        // Check for 4 matched parts
+        if (pac.matchedCount == 4 && !levelOneScriptableObject.level_is_completed && !hasAddedPerfectCoins)
         {
-            level_one_scritable_object.in_level_flexCoin += perfect_mached_max_coin;
+            levelOneScriptableObject.in_level_flexCoin += perfectMatchMaxCoin;
             hasAddedPerfectCoins = true;
         }
-        if(pac.matchedCount == 3 && level_one_scritable_object.level_is_completed != true && !hasAddedThreeMatchCoins)
+        // Check for 3 matched parts
+        else if (pac.matchedCount == 3 && !levelOneScriptableObject.level_is_completed && !hasAddedThreeMatchCoins)
         {
-            level_one_scritable_object.in_level_flexCoin += three_machem_max_coin;
+            levelOneScriptableObject.in_level_flexCoin += threeMatchMaxCoin;
             hasAddedThreeMatchCoins = true;
         }
-        if(pac.matchedCount < 3 && pac.matchedCount>0 &&level_one_scritable_object.level_is_completed != true && !hasAddedLessThanThreeCoins)
+        // Check for less than 3 matched parts
+        else if (pac.matchedCount < 3 && pac.matchedCount > 0 && !levelOneScriptableObject.level_is_completed && !hasAddedLessThanThreeCoins)
         {
-            level_one_scritable_object.in_level_flexCoin += lessthen_three_max_coin;
+            levelOneScriptableObject.in_level_flexCoin += lessThanThreeMaxCoin;
             hasAddedLessThanThreeCoins = true;
         }
 
+        // Optional: Cap the maximum coin value
+        // Uncomment if needed
+        // if (levelOneScriptableObject.in_level_flexCoin > 9)
+        // {
+        //     levelOneScriptableObject.in_level_flexCoin = 9;
+        // }
 
-        //if(level_one_scritable_object.in_level_flexCoin > 9)
-        //{
-        //    level_one_scritable_object.in_level_flexCoin = 9;
-        //}
-
-        flex_coin_shower.text = level_one_scritable_object.in_level_flexCoin.ToString();
-
-
+        // Update the flex coin display
+        if (flexCoinDisplay != null)
+        {
+            flexCoinDisplay.text = levelOneScriptableObject.in_level_flexCoin.ToString();
+        }
     }
 
     private void FixedUpdate()
     {
-        if (pac.start_checking == false)
+        // Reset coin addition flags when checking stops
+        if (pac != null && !pac.startChecking)
         {
             hasAddedPerfectCoins = false;
             hasAddedThreeMatchCoins = false;
             hasAddedLessThanThreeCoins = false;
         }
     }
-
-
 
 }
