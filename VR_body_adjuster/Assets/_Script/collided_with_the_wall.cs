@@ -16,7 +16,7 @@ public class collided_with_the_wall : MonoBehaviour
     {
         if(other.gameObject.CompareTag("wall"))
         {
-            pac.start_checking = true;
+            pac.startChecking = true;
             Debug.Log("touch_huaaa");
         }
     }

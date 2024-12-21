@@ -4,68 +4,44 @@ using UnityEngine;
 
 public class wall_spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject pose1, pose2, pose3;
+    public enum PoseType { First, Second, Third }
 
-    public bool frstPose, secondpose, thirdpose;
-
-    [SerializeField] private wall_movement wallmovement;
-    [SerializeField] float reset_wall_start_movening_timer;
-
-    public float timer_starts;
-
-    public bool callthefunction;
+    [SerializeField] private GameObject pose1;
+    [SerializeField] private GameObject pose2;
+    [SerializeField] private GameObject pose3;
+    [SerializeField] private wall_movement wallMovement;
+    [SerializeField] private float resetWallStartTimer ;
+    [SerializeField] private float functionCallDelay ;
 
     private void Start()
     {
-        wallmovement = GetComponent<wall_movement>();
-        frstPose = true;
+        wallMovement = GetComponent<wall_movement>();
+        TriggerNextPose(PoseType.First);
     }
 
-    private void Update()
+    public void TriggerNextPose(PoseType pose)
     {
-        if (callthefunction)
+        switch (pose)
         {
-            StartCoroutine(ResetWallMovementCoroutine());
-        }
-
-        if (secondpose)
-        {
-            pose2.SetActive(true);
-            Destroy(pose1);
-            StartCoroutine(function_calling());
-            secondpose = false;
-        }
-        if (thirdpose)
-        {
-            pose3.SetActive(true);
-            Destroy(pose2);
-            StartCoroutine(function_calling());
+            case PoseType.First:
+                pose1.SetActive(true);
+                break;
+            case PoseType.Second:
+                pose2.SetActive(true);
+                Destroy(pose1);
+                StartCoroutine(DelayedWallReset());
+                break;
+            case PoseType.Third:
+                pose3.SetActive(true);
+                Destroy(pose2);
+                StartCoroutine(DelayedWallReset());
+                break;
         }
     }
 
-    IEnumerator function_calling()
+    private IEnumerator DelayedWallReset()
     {
-        yield return new WaitForSeconds(timer_starts);
-        callthefunction = true;
-
-        yield return new WaitForSeconds(3);
-        callthefunction = false;
+        yield return new WaitForSeconds(functionCallDelay);
+        wallMovement.ResetWallMovement(resetWallStartTimer);
     }
-
-    IEnumerator ResetWallMovementCoroutine()
-    {
-        reseting(); // Call the reseting logic
-        yield return null; // Wait for the current frame to finish
-
-        // Wait for the reset_wall_start_movening_timer duration
-        yield return new WaitForSeconds(reset_wall_start_movening_timer);
-        callthefunction = false; // Set callthefunction to false after reset logic is completed
-    }
-
-    void reseting()
-    {
-        wallmovement.countdownTime = reset_wall_start_movening_timer;
-        wallmovement.isMoving = false;
-    }
-
 }

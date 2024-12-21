@@ -6,47 +6,40 @@ using UnityEngine;
 
 public class pose_accruation_checker : MonoBehaviour
 {
-    [SerializeField] private wall_spawner wallspawner;
-    [SerializeField] private int wall_spawn_count = 1;
+    [SerializeField] private wall_spawner wallSpawner;
+    [SerializeField] private wall_movement wallmovement;
+    [SerializeField] private List<body_position_macher> bodyParts;
+    [SerializeField] private Transform cameraOffset;
+    [SerializeField] private float shakeDuration = 0.5f;
+    [SerializeField] private float shakeMagnitude = 0.1f;
+    [SerializeField] private int resetTimerForChecking = 10;
+    [SerializeField] private float destroyerDelay = 5f;
 
+    public bool canShatter; // Ensure public for access
+    public bool self_destroy; // Ensure public for access
 
-    [SerializeField] private List<body_position_macher> bodyParts; // List of body part scripts
-    public bool canShatter ; // Determines if shattering can occur
-
-    public bool start_checking;
-
-    public int  matchedCount;
-    public bool allareMatched;
-
-    [SerializeField] private Transform cameraOffset; // Reference to the XR Origin's Camera Offset
-    [SerializeField] private float shakeDuration = 0.5f; // Duration of the shake
-    [SerializeField] private float shakeMagnitude = 0.1f; // Magnitude of the shake
-
-    private Vector3 originalCameraOffsetPosition; // To store the initial offset position
-
-    public int reset_timer_for_checking;
-    public float destroyer_delay;
-    public bool self_destroy;
-
+    private Vector3 originalCameraOffsetPosition;
+    public int matchedCount;
+    public bool startChecking;
+    public int wallSpawnCount = 1;
 
     private void Start()
     {
-        wallspawner = GetComponent<wall_spawner>();
+        wallmovement = GetComponent<wall_movement>();   
 
 
         if (cameraOffset == null)
         {
-            // Automatically find the Camera Offset under XR Origin
-            cameraOffset = FindObjectOfType<XROrigin>().transform.Find("Camera Offset");
+            cameraOffset = FindObjectOfType<XROrigin>()?.transform.Find("Camera Offset");
             if (cameraOffset == null)
             {
-                Debug.LogError("Camera Offset not found in XR Origin. Please assign it manually.");
+                Debug.LogError("Camera Offset not found. Please assign it manually.");
                 return;
             }
         }
 
         originalCameraOffsetPosition = cameraOffset.localPosition;
-
+        wallSpawner = GetComponent<wall_spawner>();
     }
 
     private void Update()
@@ -54,97 +47,39 @@ public class pose_accruation_checker : MonoBehaviour
         if (bodyParts == null || bodyParts.Count == 0)
         {
             bodyParts = new List<body_position_macher>(FindObjectsOfType<body_position_macher>());
-        }
-        if (bodyParts.Count == 0)
-        {
-            Debug.LogError("No body_position_macher components found in the scene.");
+            if (bodyParts.Count == 0)
+            {
+                Debug.LogError("No BodyPositionMatcher components found in the scene.");
+                return;
+            }
         }
 
-        if (start_checking)
+        if (startChecking)
         {
             CheckMatchingStatus();
-            time_to_destroy();
-            StartCoroutine(falsethestartchecking());
-
+            UpdateDestroyTimer();
         }
-       
-        if(destroyer_delay>0)
+
+        if (self_destroy && destroyerDelay <= 0)
         {
-            self_destroy = false;
+            ResetCheckerState();
         }
-
     }
 
-
-  
-
-
-    void time_to_destroy()
+    private void UpdateDestroyTimer()
     {
-        destroyer_delay -= Time.deltaTime;
-        if(destroyer_delay <= 0)
+        destroyerDelay -= Time.deltaTime;
+        if (destroyerDelay <= 0)
         {
             self_destroy = true;
         }
-
-        
     }
-
-
-    // reseting all the things
-    IEnumerator falsethestartchecking()
-    {
-        yield return new WaitForSeconds(reset_timer_for_checking);
-        
-        self_destroy =false;
-        if(start_checking)
-        {
-            wall_spawn_count++;
-        }
-
-        
-
-        if(wall_spawn_count == 2)
-        {
-            
-            canShatter = false;
-            destroyer_delay = 5;
-            reset_timer_for_checking = 10;
-            wallspawner.secondpose = true;
-            wallspawner.frstPose = false;
-        }
-        if(wall_spawn_count==3)
-        {
-           
-            canShatter = false;
-            destroyer_delay = 5;
-            reset_timer_for_checking = 10;
-            wallspawner.thirdpose = true;
-            wallspawner.secondpose = false;
-        }
-
-        foreach (var part in bodyParts)
-        {
-            if(part.mached==true)
-            {
-                part.mached = false;
-            }
-        }
-  
-        matchedCount = 0;
-        start_checking = false;
-        bodyParts = null;
-    }
-
-   
 
     private void CheckMatchingStatus()
     {
-        // Reset the matched count before counting
         matchedCount = 0;
-
-        // Check if all body parts are matched
         bool allMatched = true;
+
         foreach (var part in bodyParts)
         {
             if (part.mached)
@@ -157,33 +92,40 @@ public class pose_accruation_checker : MonoBehaviour
             }
         }
 
-        // Check if all body parts are matched
-        allareMatched = matchedCount == bodyParts.Count;
-
-        // Set the canShatter state
-        if (!canShatter && !allMatched) // Trigger only when `canShatter` transitions to true
+        if (!allMatched)
         {
-            canShatter = true;
             StartCoroutine(CameraShake());
-        }
-        else if (allMatched)
-        {
-            canShatter = false;
+            canShatter = true;
         }
 
-        // Log the results
         Debug.Log($"Matched body parts: {matchedCount}/{bodyParts.Count}");
-        if (canShatter)
+    }
+
+    private void ResetCheckerState()
+    {
+        self_destroy = false;
+        destroyerDelay = 5f;
+        startChecking = false;
+        canShatter = false;
+        wallmovement.isMoving = false;
+
+        foreach (var part in bodyParts)
         {
-            Debug.Log("Can shatter! Not all body parts are matched.");
+            part.mached = false;
         }
-        else
+
+        matchedCount = 0;
+        wallSpawnCount++;
+
+        switch (wallSpawnCount)
         {
-            Debug.Log("All body parts matched. Cannot shatter.");
+            case 2:
+                wallSpawner.TriggerNextPose(wall_spawner.PoseType.Second);
+                break;
+            case 3:
+                wallSpawner.TriggerNextPose(wall_spawner.PoseType.Third);
+                break;
         }
-
-
-
     }
 
     private IEnumerator CameraShake()
@@ -196,10 +138,9 @@ public class pose_accruation_checker : MonoBehaviour
             cameraOffset.localPosition = originalCameraOffsetPosition + randomOffset;
 
             elapsedTime += Time.deltaTime;
-            yield return null; // Wait until the next frame
+            yield return null;
         }
 
-        // Reset camera position
         cameraOffset.localPosition = originalCameraOffsetPosition;
     }
 }
