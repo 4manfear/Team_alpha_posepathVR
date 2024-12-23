@@ -4,43 +4,42 @@ using UnityEngine;
 
 public class wall_shatter_effect : MonoBehaviour
 {
-    public bool canshatter;
-  
-
-    [SerializeField] private GameObject shattered_wall, the_orignal;
-    public pose_accruation_checker pac;
+    public bool canShatterwall;
+    [SerializeField] private GameObject shatteredWall, originalWall;
+    public pose_accruation_checker poseChecker;
 
     private void Start()
     {
-        shattered_wall.SetActive(false);
+        shatteredWall.SetActive(false);
+       
+
+        if (poseChecker == null)
+        {
+            Debug.LogError("PoseAccruationChecker not found!");
+        }
     }
 
     private void Update()
     {
+        poseChecker = FindObjectOfType<pose_accruation_checker>();
 
-        pac = GameObject.FindObjectOfType<pose_accruation_checker>();
 
-        if (pac.canShatter == true)
+        if (poseChecker == null) return;
+
+        canShatterwall = poseChecker.canShatter;
+
+        if (poseChecker.self_destroy)
         {
-            canshatter = true;
+            Destroy(shatteredWall);
+            Destroy(originalWall);
         }
 
-        if (pac.self_destroy == true)
+        if (canShatterwall)
         {
-            Destroy(shattered_wall);
-            Destroy(the_orignal);
-           
-        }
-
-
-        if (canshatter)
-        {
-            shattered_wall.transform.parent = null;
-            the_orignal.gameObject.SetActive(false);
-            shattered_wall.SetActive(true);
-            Destroy(the_orignal);
+            shatteredWall.transform.parent = null;
+            originalWall.SetActive(false);
+            shatteredWall.SetActive(true);
+            Destroy(originalWall);
         }
     }
-
-
 }
