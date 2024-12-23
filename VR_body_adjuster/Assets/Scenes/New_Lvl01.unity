@@ -27367,8 +27367,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4813331181837975012}
-  m_LocalRotation: {x: 0.0000000018626449, y: 0.42175817, z: -0.0000000018626449, w: 0.9067084}
-  m_LocalPosition: {x: 0, y: 0, z: 1.89}
+  m_LocalRotation: {x: -0.0171235, y: 0.32428458, z: -0.04987274, w: 0.94448876}
+  m_LocalPosition: {x: 0, y: 0, z: 0.61}
   m_LocalScale: {x: 0.008868514, y: 0.0102953445, z: 0.0053022327}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27380,10 +27380,10 @@ RectTransform:
   - {fileID: 4398309281717415705}
   - {fileID: 1838782775747996906}
   m_Father: {fileID: 7700410018945695540}
-  m_LocalEulerAnglesHint: {x: 0, y: 49.891, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 37.899, z: -6.045}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.53, y: -4.51}
+  m_AnchoredPosition: {x: -1.53, y: -4.51}
   m_SizeDelta: {x: 1920, y: 1080.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &5859024400126501141
@@ -30871,8 +30871,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6859316211654031075}
-  m_LocalRotation: {x: -0, y: -0.42126438, z: -0.0000000037252903, w: 0.90693796}
-  m_LocalPosition: {x: 0, y: 0, z: -18.360292}
+  m_LocalRotation: {x: -0.0073991017, y: -0.42119938, z: 0.015929483, w: 0.906798}
+  m_LocalPosition: {x: 0, y: 0, z: -18.35}
   m_LocalScale: {x: 0.008868514, y: 0.0102953445, z: 0.0053022327}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30884,10 +30884,10 @@ RectTransform:
   - {fileID: 9032291306429329268}
   - {fileID: 9022809567854956937}
   m_Father: {fileID: 7700410018945695540}
-  m_LocalEulerAnglesHint: {x: 0, y: -49.829, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -49.829, z: 2.013}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.3200543, y: -5.590024}
+  m_AnchoredPosition: {x: 1.33, y: -6.04}
   m_SizeDelta: {x: 1920, y: 1080.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7803094331785615733
