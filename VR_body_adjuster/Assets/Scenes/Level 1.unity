@@ -10382,13 +10382,9 @@ MonoBehaviour:
   pose1: {fileID: 1657843530162140591}
   pose2: {fileID: 8207532620810851520}
   pose3: {fileID: 0}
-  frstPose: 0
-  secondpose: 0
-  thirdpose: 0
-  wallmovement: {fileID: 4397805439011754599}
-  reset_wall_start_movening_timer: 10
-  timer_starts: 0
-  callthefunction: 0
+  wallMovement: {fileID: 0}
+  resetWallStartTimer: 0
+  functionCallDelay: 0
 --- !u!1 &1381274464259542401
 GameObject:
   m_ObjectHideFlags: 0
@@ -25461,12 +25457,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09e5b5458aa35c409423e321f1a33f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textoftime: {fileID: 191410074332325503}
-  cut_out_wall: {fileID: 0}
-  wallspawner: {fileID: 1359750540293281049}
-  countdownTime: 10
+  timerText: {fileID: 0}
   movementSpeed: 2
   movementDirection: {x: 0, y: 0, z: 1}
+  cutOutWall: {fileID: 0}
+  countdownTime: 10
   isMoving: 0
 --- !u!224 &4398309281717415705
 RectTransform:
@@ -27176,11 +27171,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pac: {fileID: 8133932503306091167}
-  level_one_scritable_object: {fileID: 11400000, guid: 605cb23325f800249ac17338389bbf5b, type: 2}
-  flex_coin_shower: {fileID: 6798386344194617450}
-  perfect_mached_max_coin: 3
-  three_machem_max_coin: 2
-  lessthen_three_max_coin: 1
+  levelOneScriptableObject: {fileID: 0}
+  flexCoinDisplay: {fileID: 0}
+  perfectMatchMaxCoin: 0
+  threeMatchMaxCoin: 0
+  lessThanThreeMaxCoin: 0
 --- !u!33 &5363046941466545997
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -28251,8 +28246,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4813331181837975012}
-  m_LocalRotation: {x: 0.0000000018626449, y: 0.42175817, z: -0.0000000018626449, w: 0.9067084}
-  m_LocalPosition: {x: 0, y: 0, z: 1.89}
+  m_LocalRotation: {x: -0.04665869, y: -0.0935381, z: -0.0023419019, w: 0.994519}
+  m_LocalPosition: {x: 0, y: 0, z: -3.32}
   m_LocalScale: {x: 0.008868514, y: 0.0102953445, z: 0.0053022327}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28264,10 +28259,10 @@ RectTransform:
   - {fileID: 4398309281717415705}
   - {fileID: 1838782775747996906}
   m_Father: {fileID: 7700410018945695540}
-  m_LocalEulerAnglesHint: {x: 0, y: 49.891, z: 0}
+  m_LocalEulerAnglesHint: {x: -5.35, y: -10.757, z: 0.234}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.53, y: -4.51}
+  m_AnchoredPosition: {x: -5.11, y: -5.38}
   m_SizeDelta: {x: 1920, y: 1080.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &5859024400126501141
@@ -28620,7 +28615,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4601706721532499620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00022482847}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28628,7 +28623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -789.3093, y: -0.000061035156}
+  m_AnchoredPosition: {x: -789, y: 2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &6097458073172692569
@@ -29009,10 +29004,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a275e9c2b9398fa42b028872f26f21fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canshatter: 0
-  shattered_wall: {fileID: 6872771315248309020}
-  the_orignal: {fileID: 1657843530162140591}
-  pac: {fileID: 8133932503306091167}
+  canShatterwall: 0
+  shatteredWall: {fileID: 0}
+  originalWall: {fileID: 0}
+  poseChecker: {fileID: 0}
 --- !u!114 &6350441635688691710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29730,7 +29725,7 @@ MonoBehaviour:
     serializedVersion: 2
     key0: {r: 0.1107654, g: 0.17062438, b: 0.17735851, a: 1}
     key1: {r: 0.08761124, g: 0.3993814, b: 0.4339623, a: 1}
-    key2: {r: 0.22807346, g: 0.4339623, b: 0.018832278, a: 1}
+    key2: {r: 0.22807346, g: 0.4339623, b: 0.018832278, a: 0}
     key3: {r: 0.7509433, g: 0.27629036, b: 0.27629036, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -29745,8 +29740,8 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 17348
-    atime2: 35235
+    atime1: 65535
+    atime2: 0
     atime3: 0
     atime4: 0
     atime5: 0
@@ -29755,7 +29750,7 @@ MonoBehaviour:
     m_Mode: 0
     m_ColorSpace: -1
     m_NumColorKeys: 4
-    m_NumAlphaKeys: 3
+    m_NumAlphaKeys: 2
 --- !u!1 &6702060294800848431
 GameObject:
   m_ObjectHideFlags: 0
@@ -31229,10 +31224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a275e9c2b9398fa42b028872f26f21fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canshatter: 0
-  shattered_wall: {fileID: 7838152171262734884}
-  the_orignal: {fileID: 8207532620810851520}
-  pac: {fileID: 0}
+  canShatterwall: 0
+  shatteredWall: {fileID: 0}
+  originalWall: {fileID: 0}
+  poseChecker: {fileID: 0}
 --- !u!23 &7616471106167682155
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31476,8 +31471,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6859316211654031075}
-  m_LocalRotation: {x: -0, y: -0.42126438, z: -0.0000000037252903, w: 0.90693796}
-  m_LocalPosition: {x: 0, y: 0, z: -18.360292}
+  m_LocalRotation: {x: 0.0065353666, y: -0.99497306, z: 0.056302577, w: -0.0825597}
+  m_LocalPosition: {x: 0, y: 0, z: -16.740284}
   m_LocalScale: {x: 0.008868514, y: 0.0102953445, z: 0.0053022327}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -31489,10 +31484,10 @@ RectTransform:
   - {fileID: 9032291306429329268}
   - {fileID: 9022809567854956937}
   m_Father: {fileID: 7700410018945695540}
-  m_LocalEulerAnglesHint: {x: 0, y: -49.829, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.371, y: -189.558, z: -1.286}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.3200543, y: -5.590024}
+  m_AnchoredPosition: {x: -3.3200665, y: -6.6599946}
   m_SizeDelta: {x: 1920, y: 1080.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7803094331785615733
@@ -31516,9 +31511,9 @@ MonoBehaviour:
   - {fileID: 3427537263187808298}
   - {fileID: 611884184696885499}
   - {fileID: 2923349496499520065}
-  sensitivity: 100
-  lerpSpeed: 10
-  decaySpeed: 2
+  sensitivity: 1000
+  lerpSpeed: 20
+  decaySpeed: 10
   colorGradient:
     serializedVersion: 2
     key0: {r: 0.1107654, g: 0.17062438, b: 0.17735851, a: 1}
@@ -32250,19 +32245,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422863b9c635d9e43b30bb3ca950d598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallspawner: {fileID: 1359750540293281049}
-  wall_spawn_count: 1
+  wallSpawner: {fileID: 0}
+  wallmovement: {fileID: 0}
   bodyParts: []
-  canShatter: 0
-  start_checking: 0
-  matchedCount: 0
-  allareMatched: 0
   cameraOffset: {fileID: 0}
   shakeDuration: 1
   shakeMagnitude: 0.2
-  reset_timer_for_checking: 15
-  destroyer_delay: 5
+  resetTimerForChecking: 10
+  destroyerDelay: 5
+  canShatter: 0
   self_destroy: 0
+  matchedCount: 0
+  startChecking: 0
+  wallSpawnCount: 1
 --- !u!23 &8134731708883621351
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -7,9 +7,9 @@ public class EqualizerVisualizer : MonoBehaviour
 {
     public AudioSource audioSource; // Reference to your audio source
     public List<Image> bars; // List of UI bars (manually assigned in the Inspector)
-    public float sensitivity = 100f; // Sensitivity of the bar movement
-    public float lerpSpeed = 10f; // Speed of the bar smoothing
-    public float decaySpeed = 2f; // Speed at which bars shrink when spectrum data decreases
+    public float sensitivity ; // Sensitivity of the bar movement
+    public float lerpSpeed ; // Speed of the bar smoothing
+    public float decaySpeed ; // Speed at which bars shrink when spectrum data decreases
     public Gradient colorGradient; // Gradient for color transitions based on height
 
     private float[] spectrumData; // Array for spectrum data

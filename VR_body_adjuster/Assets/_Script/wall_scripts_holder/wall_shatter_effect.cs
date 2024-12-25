@@ -11,17 +11,14 @@ public class wall_shatter_effect : MonoBehaviour
     private void Start()
     {
         shatteredWall.SetActive(false);
-       
 
-        if (poseChecker == null)
-        {
-            Debug.LogError("PoseAccruationChecker not found!");
-        }
+
+        poseChecker = FindObjectOfType<pose_accruation_checker>();
     }
 
     private void Update()
     {
-        poseChecker = FindObjectOfType<pose_accruation_checker>();
+        
 
 
         if (poseChecker == null) return;
