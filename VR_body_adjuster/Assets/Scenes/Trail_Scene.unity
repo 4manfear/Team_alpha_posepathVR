@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 1268774358}
   - component: {fileID: 1268774357}
   - component: {fileID: 1268774356}
+  - component: {fileID: 1268774359}
   m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
@@ -222,7 +223,7 @@ VisualEffect:
       m_Array: []
     m_NamedObject:
       m_Array:
-      - m_Value: {fileID: 11700000, guid: f156abaee6d68d244910aa86d35ca9b6, type: 2}
+      - m_Value: {fileID: 11700000, guid: e61a25e46a3aac2408a39c9ec53d8da5, type: 2}
         m_Name: SDF
         m_Overridden: 1
     m_Bool:
@@ -242,6 +243,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1268774359
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268774355}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 76248ed96f3fdf94fb942d90a7bf5802, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1389449092
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +518,7 @@ Transform:
   m_GameObject: {fileID: 2040641173}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.21, z: -4.29}
+  m_LocalPosition: {x: 0, y: -0.21, z: -5.387}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
