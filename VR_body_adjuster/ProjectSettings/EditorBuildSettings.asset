@@ -6,27 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/shape_adjust_prototype.unity
-    guid: 600faa4071bd1df40b0adf2e6858ed79
-  - enabled: 1
-    path: Assets/Scenes/LVL_1.unity
-    guid: f182c0b9b4460f4439eb6d7bb61d9b13
-  - enabled: 1
     path: Assets/Scenes/UI.unity
     guid: 5f7bdf27b03bfe141a6d0390b4b41ece
   - enabled: 1
-    path: Assets/Scenes/Main_Menu.unity
-    guid: 9f1f26c69fb908e4c9259d1be1bdf2a6
-  - enabled: 0
-    path: Assets/Scenes/New_Lvl01.unity
-    guid: c886dc0ca4678da4d82d071b87ee4db7
+    path: Assets/Scenes/Level 1.unity
+    guid: 296de2458e2b158439a749adc6b10b9a
   - enabled: 1
     path: Assets/Scenes/Level 2.unity
     guid: d4f8d1178676cac4aa60941d5d9264d0
   - enabled: 1
     path: Assets/Scenes/Level 3.unity
     guid: 3d6d12479d2b98d44ba77b508985b3b0
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/shape_adjust_prototype.unity
+    guid: 600faa4071bd1df40b0adf2e6858ed79
+  - enabled: 0
+    path: Assets/Scenes/LVL_1.unity
+    guid: f182c0b9b4460f4439eb6d7bb61d9b13
+  - enabled: 0
+    path: Assets/Scenes/Main_Menu.unity
+    guid: 9f1f26c69fb908e4c9259d1be1bdf2a6
+  - enabled: 0
+    path: Assets/Scenes/New_Lvl01.unity
+    guid: c886dc0ca4678da4d82d071b87ee4db7
+  - enabled: 0
     path: Assets/Scenes/Trail_Scene.unity
     guid: 99d11d520ed7966429b4ca19fb0275e5
   m_configObjects:

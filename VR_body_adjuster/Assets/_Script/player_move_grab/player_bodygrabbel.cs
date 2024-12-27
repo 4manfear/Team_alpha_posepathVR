@@ -36,7 +36,7 @@ public class player_bodygrabbel : MonoBehaviour
         //ctx is the call back function used in here to bind the button and the function calling it
         _rightHandGrabButton.action.performed += ctx => TryGrabRightHand();
         _rightHandGrabButton.action.canceled += ctx => ReleaseRightHand();
-        button_right.action.performed += ctx => vr_button_pressed();
+        //button_right.action.performed += ctx => vr_button_pressed();
         button_right.action.canceled += ctx => vr_button_Realeased();
 
         _leftHandGrabButton.action.performed += ctx => TryGrabLeftHand();
@@ -110,11 +110,11 @@ public class player_bodygrabbel : MonoBehaviour
         }
     }
 
-    void vr_button_pressed()
-    {
-        Debug.Log("this button pressed");
-        mannequinReset.ResetMannequin();
-    }
+    //void vr_button_pressed()
+    //{
+    //    Debug.Log("this button pressed");
+    //    mannequinReset.ResetMannequin();
+    //}
     void vr_button_Realeased()
     {
 
@@ -151,10 +151,8 @@ public class player_bodygrabbel : MonoBehaviour
             Quaternion currentHandRotation = rightHandTransform.rotation;
             Quaternion rotationOffset = currentHandRotation * Quaternion.Inverse(previousHandRotation);
 
-            // Apply the offset to the grabbed object
-            grabbedObject.rotation = Quaternion.Inverse(rotationOffset) * grabbedObject.rotation ;
-
-            
+            // Apply the offset to the grabbed object's rotation
+            grabbedObject.rotation = rotationOffset * grabbedObject.rotation;
 
             // Update the previous hand rotation
             previousHandRotation = currentHandRotation;

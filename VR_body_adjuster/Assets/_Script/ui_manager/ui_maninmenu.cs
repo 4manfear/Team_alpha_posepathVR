@@ -7,17 +7,9 @@ public class ui_maninmenu : MonoBehaviour
 {
     public int scene_to_be_loaded;
 
-    public GameObject main;
-    public GameObject about;
-    public void about_button()
+    public void quit_game()
     {
-        main.SetActive(false);
-        about.SetActive(true);
-    }
-    public void back_to_main()
-    {
-        main.SetActive(true);
-        about.SetActive(false);
+        Application.Quit();
     }
 
     public void Play_the_game()

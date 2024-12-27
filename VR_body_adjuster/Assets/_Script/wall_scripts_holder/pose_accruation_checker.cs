@@ -25,7 +25,8 @@ public class pose_accruation_checker : MonoBehaviour
 
     private void Start()
     {
-        wallmovement = GetComponent<wall_movement>();   
+        wallmovement = GetComponent<wall_movement>();
+        bodyParts = new List<body_position_macher>(FindObjectsOfType<body_position_macher>());
 
 
         if (cameraOffset == null)
@@ -44,16 +45,6 @@ public class pose_accruation_checker : MonoBehaviour
 
     private void Update()
     {
-        if (bodyParts == null || bodyParts.Count == 0)
-        {
-            bodyParts = new List<body_position_macher>(FindObjectsOfType<body_position_macher>());
-            if (bodyParts.Count == 0)
-            {
-                Debug.LogError("No BodyPositionMatcher components found in the scene.");
-                return;
-            }
-        }
-
         if (startChecking)
         {
             CheckMatchingStatus();
@@ -121,9 +112,12 @@ public class pose_accruation_checker : MonoBehaviour
         {
             case 2:
                 wallSpawner.TriggerNextPose(wall_spawner.PoseType.Second);
+                bodyParts = new List<body_position_macher>(FindObjectsOfType<body_position_macher>());
+
                 break;
             case 3:
                 wallSpawner.TriggerNextPose(wall_spawner.PoseType.Third);
+                bodyParts = new List<body_position_macher>(FindObjectsOfType<body_position_macher>());
                 break;
         }
     }
