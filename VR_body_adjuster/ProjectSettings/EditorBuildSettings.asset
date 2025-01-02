@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/New_Lvl01.unity
     guid: c886dc0ca4678da4d82d071b87ee4db7
   - enabled: 0
-    path: Assets/Scenes/Trail_Scene.unity
+    path: Assets/Scenes/VFX/Spawn.unity
     guid: 99d11d520ed7966429b4ca19fb0275e5
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4c2f5f3c1b381304fa790a13a6a56d73, type: 2}
