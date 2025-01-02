@@ -29,9 +29,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/New_Lvl01.unity
     guid: c886dc0ca4678da4d82d071b87ee4db7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/VFX/Spawn.unity
     guid: 99d11d520ed7966429b4ca19fb0275e5
+  - enabled: 1
+    path: Assets/Scenes/VFX/Music.unity
+    guid: 8a8cafc13f16d3e4ea817ca7b0d955af
+  - enabled: 1
+    path: Assets/Scenes/VFX/Dissolve.unity
+    guid: b114e462eba3f6740b898aeb95dfd80b
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4c2f5f3c1b381304fa790a13a6a56d73, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 3ba17a60870bb8b4192f5259f192b198, type: 2}
